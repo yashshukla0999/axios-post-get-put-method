@@ -52,6 +52,7 @@ const ke = document.addEventListener('submit',update);
           console.log(err);
           
         });
+       
         // localStorage.setItem(mail,JSON.stringify(obj));
         // show(obj);
       };
@@ -76,11 +77,26 @@ const ke = document.addEventListener('submit',update);
       // childr.childNodes.textContent='delete';
      const btn = document.createElement('button');
      btn.textContent = 'delete';
+     
+     btn.onclick=()=>{
+      axios.delete(`https://crudcrud.com/api/230d19eb85e94c499797a2269baf9dee/appointmentData ${obj._id}`)
+        .then((res)=>{
+       prt.removeChild(childr)
+          console.log(res)
+
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+      
+      
+     }
      const edit = document.createElement('button');
      edit.textContent='edit';
      btn.onclick=()=>{
-      localStorage.removeItem(childr);
-      prt.removeChild(childr)
+      
+      //localStorage.removeItem(childr);
+      
       
       
      }
