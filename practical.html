@@ -43,7 +43,7 @@ const ke = document.addEventListener('submit',update);
           name:nam,
           email:mail
         }
-        axios.post("https://crudcrud.com/api/230d19eb85e94c499797a2269baf9dee/appointmentData",obj)
+        axios.post("https://crudcrud.com/api/a7d0f6f9e0d341409282da71bda2bf0a/appointmentData",obj)
         .then((resp) => {
           show(resp.data)
           console.log(resp);
@@ -57,7 +57,7 @@ const ke = document.addEventListener('submit',update);
         // show(obj);
       };
       window.addEventListener("DOMContentLoaded",()=>{
-        axios.get("https://crudcrud.com/api/230d19eb85e94c499797a2269baf9dee/appointmentData")
+        axios.get("https://crudcrud.com/api/a7d0f6f9e0d341409282da71bda2bf0a/appointmentData")
         .then((resp)=>{
           console.log(resp)
           for(var i = 0;i<=resp.data.length;i++){
@@ -79,7 +79,25 @@ const ke = document.addEventListener('submit',update);
      btn.textContent = 'delete';
      
      btn.onclick=()=>{
-      axios.delete(`https://crudcrud.com/api/230d19eb85e94c499797a2269baf9dee/appointmentData ${obj._id}`)
+      axios.delete(`https://crudcrud.com/api/a7d0f6f9e0d341409282da71bda2bf0a/appointmentData/${obj._id}`)
+        .then((res)=>{
+       prt.removeChild(childr)
+        
+
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+        prt.removeChild(childr)
+      
+     }
+     const edit = document.createElement('button');
+     edit.textContent='edit';
+     edit.onclick=()=>{
+     document.getElementById('name').value=obj.name
+     document.getElementById('email').value = obj.mail
+
+      axios.put(`https://crudcrud.com/api/a7d0f6f9e0d341409282da71bda2bf0a/appointmentData/${obj._id}`)
         .then((res)=>{
        prt.removeChild(childr)
           console.log(res)
@@ -88,13 +106,7 @@ const ke = document.addEventListener('submit',update);
         .catch((err)=>{
           console.log(err)
         })
-      
-      
-     }
-     const edit = document.createElement('button');
-     edit.textContent='edit';
-     btn.onclick=()=>{
-      
+        prt.removeChild(childr)
       //localStorage.removeItem(childr);
       
       
